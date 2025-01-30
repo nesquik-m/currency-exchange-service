@@ -21,3 +21,7 @@ spring:
         show_sql: true
         hbm2ddl:
           auto: none
+
+app:
+  source-url: https://cbr.ru/scripts/XML_daily.asp
+  cron: 0 0 1 * * *

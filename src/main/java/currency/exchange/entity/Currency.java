@@ -33,6 +33,6 @@ public class Currency {
     private Long isoNumCode;
 
     @Column(name = "iso_char_code")
-    private Long isoCharCode;
+    private String isoCharCode;
 
 }

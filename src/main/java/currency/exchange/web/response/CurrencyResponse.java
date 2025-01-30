@@ -1,4 +1,4 @@
-package currency.exchange.dto;
+package currency.exchange.web.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurrencyDto {
+public class CurrencyResponse {
 
     private Long id;
 
