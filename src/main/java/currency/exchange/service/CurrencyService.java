@@ -1,5 +1,6 @@
 package currency.exchange.service;
 
+import currency.exchange.exception.EntityNotFoundException;
 import currency.exchange.web.response.CurrencyListResponse;
 import currency.exchange.web.response.CurrencyResponse;
 import lombok.RequiredArgsConstructor;
@@ -15,20 +16,23 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CurrencyService {
-    private final CurrencyMapper mapper;
+
     private final CurrencyRepository repository;
+
+    private final CurrencyMapper mapper;
 
     public CurrencyResponse getById(Long id) {
         log.info("CurrencyService method getById executed");
         Currency currency = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Currency not found with id: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Currency not found with id: " + id));
         return mapper.convertToDto(currency);
     }
 
     public Double convertValue(Long value, Long numCode) {
         log.info("CurrencyService method convertValue executed");
-        Currency currency = repository.findByIsoNumCode(numCode);
-        return value * currency.getValue();
+        return repository.findByIsoNumCode(numCode)
+                .map(currency -> value * currency.getValue())
+                .orElseThrow(() -> new EntityNotFoundException("Currency not found with numCode: " + numCode));
     }
 
     public CurrencyResponse create(CurrencyResponse dto) {
