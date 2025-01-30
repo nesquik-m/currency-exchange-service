@@ -1,5 +1,6 @@
-package currency.exchange.dto;
+package currency.exchange.web.response;
 
+import currency.exchange.dto.CurrencyItemDto;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CurrencyList {
+public class CurrencyListResponse {
 
     @Builder.Default
     private List<CurrencyItemDto> currencies = new ArrayList<>();
