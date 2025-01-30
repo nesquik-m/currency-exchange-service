@@ -1,5 +1,6 @@
 package currency.exchange.service;
 
+import currency.exchange.dto.CurrencyList;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,11 @@ public class CurrencyService {
     public CurrencyDto create(CurrencyDto dto) {
         log.info("CurrencyService method create executed");
         return  mapper.convertToDto(repository.save(mapper.convertToEntity(dto)));
+    }
+
+    public CurrencyList getAll() {
+        log.info("CurrencyService method getAll executed");
+        return mapper.convertToDtoList(repository.findAll());
     }
 
 }

@@ -1,6 +1,7 @@
 package currency.exchange.controller;
 
 import currency.exchange.dto.CurrencyDto;
+import currency.exchange.dto.CurrencyList;
 import currency.exchange.service.CurrencyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,11 @@ public class CurrencyController {
     @PostMapping("/create")
     public CurrencyDto create(@RequestBody CurrencyDto dto) {
         return service.create(dto);
+    }
+
+    @GetMapping("/currency")
+    public CurrencyList getAll() {
+        return service.getAll();
     }
 
 }
