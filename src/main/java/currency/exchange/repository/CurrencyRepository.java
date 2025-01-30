@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CurrencyRepository extends JpaRepository<Currency, Long> {
 
-    Currency findByIsoNumCode(Long isoNumCode);
+    Optional<Currency> findByIsoNumCode(Long isoNumCode);
 
     Optional<Currency> findByIsoCharCode(String isoCharCode);
 
